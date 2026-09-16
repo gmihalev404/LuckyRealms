@@ -138,7 +138,7 @@ window.GAME_CONFIGS = {
                 weight: 30
             },
             {
-                icon: "⚰️",
+                icon: "🕸️",
                 multiplier: 2,
                 weight: 44
             }
