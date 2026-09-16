@@ -130,12 +130,19 @@ Because the project currently has no backend, this data is stored locally in the
 
 ## Screenshots
 
-Screenshots will be added here showing:
+### Home
+![LuckyRealms Home](assets/screenshots/home1.png)
 
-- Home page
-- Dragon's Fortune
-- Poseidon's Treasure
-- Shadow Fortune
+![LuckyRealms Home](assets/screenshots/home2.png)
+
+### Dragon's Fortune
+![Dragon's Fortune](assets/screenshots/dragon.png)
+
+### Poseidon's Treasure
+![Poseidon's Treasure](assets/screenshots/ocean.png)
+
+### Shadow Fortune
+![Shadow Fortune](assets/screenshots/shadow.png)
 
 ## Author
 
