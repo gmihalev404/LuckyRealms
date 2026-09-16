@@ -33,6 +33,15 @@ const BET_STEP = 10;
 const ROWS = 3;
 const COLUMNS = 5;
 
+const PAYLINES = [
+    [0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1],
+    [2, 2, 2, 2, 2],
+
+    [0, 1, 2, 1, 0],
+    [2, 1, 0, 1, 2]
+];
+
 const savedBalance =
     localStorage.getItem("luckyRealmsBalance");
 
@@ -235,23 +244,42 @@ function calculateLineWin(row) {
     return bestWin;
 }
 
+function getPaylineSymbols(grid, payline) {
+    const line = [];
+
+    for (let column = 0; column < COLUMNS; column++) {
+        const row = payline[column];
+
+        line.push(grid[row][column]);
+    }
+
+    return line;
+}
+
 
 function calculateWins(grid) {
     let totalWin = 0;
 
     const winningLines = [];
 
-    for (let row = 0; row < ROWS; row++) {
+    for (
+        let lineIndex = 0;
+        lineIndex < PAYLINES.length;
+        lineIndex++
+    ) {
+        const payline = PAYLINES[lineIndex];
+
+        const lineSymbols =
+            getPaylineSymbols(grid, payline);
 
         const result =
-            calculateLineWin(grid[row]);
+            calculateLineWin(lineSymbols);
 
         if (result.amount > 0) {
-
             totalWin += result.amount;
 
             winningLines.push({
-                row: row,
+                payline: payline,
                 startColumn: result.startColumn,
                 matches: result.matches,
                 amount: result.amount
@@ -267,17 +295,20 @@ function calculateWins(grid) {
 
 
 function highlightWins(winningLines) {
-
     for (const line of winningLines) {
 
         for (
             let column = line.startColumn;
-            column < line.startColumn + line.matches;
+            column <
+            line.startColumn + line.matches;
             column++
         ) {
+            const row =
+                line.payline[column];
+
             const cellIndex =
                 getCellIndex(
-                    line.row,
+                    row,
                     column
                 );
 

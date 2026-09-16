@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,141 +13,144 @@
 
 <body>
 
-<header class="navbar">
-    <a href="../index.html" class="logo">
-        Lucky<span>Realms</span>
-    </a>
+    <header class="navbar">
+        <a href="../index.html" class="logo">
+            Lucky<span>Realms</span>
+        </a>
 
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../index.html#games">Games</a>
-        <a href="../index.html#about">About</a>
-    </nav>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#games">Games</a>
+            <a href="../index.html#about">About</a>
+        </nav>
 
-    <div class="balance">
-        <span>Balance</span>
-        <strong id="balance">1000</strong>
-        <span>credits</span>
-    </div>
-</header>
-
-
-<main class="slot-page">
-
-    <section class="slot-header">
-        <p class="slot-subtitle">DRAGON REALM</p>
-        <h1>Dragon's Fortune</h1>
-
-        <p>
-            Match three or more symbols from the left to claim the dragon's treasure.
-        </p>
-    </section>
-
-
-    <section class="slot-machine">
-
-        <div class="slot-grid" id="slot-grid">
-
-            <div class="slot-cell">🐉</div>
-            <div class="slot-cell">💎</div>
-            <div class="slot-cell">👑</div>
-            <div class="slot-cell">🔥</div>
-            <div class="slot-cell">💰</div>
-
-            <div class="slot-cell">👑</div>
-            <div class="slot-cell">🐉</div>
-            <div class="slot-cell">🔥</div>
-            <div class="slot-cell">💎</div>
-            <div class="slot-cell">👑</div>
-
-            <div class="slot-cell">💰</div>
-            <div class="slot-cell">🔥</div>
-            <div class="slot-cell">🐉</div>
-            <div class="slot-cell">👑</div>
-            <div class="slot-cell">💎</div>
-
+        <div class="balance">
+            <span>Balance</span>
+            <strong id="balance">1000</strong>
+            <span>credits</span>
         </div>
+    </header>
 
 
-        <div class="game-message" id="game-message">
-            Place your bet and spin.
-        </div>
+    <main class="slot-page">
+
+        <section class="slot-header">
+            <p class="slot-subtitle">DRAGON REALM</p>
+            <h1>Dragon's Fortune</h1>
+
+            <p>
+                Match three or more consecutive symbols on a payline
+                to claim the dragon's treasure.
+            </p>
+        </section>
 
 
-        <div class="slot-controls">
+        <section class="slot-machine">
 
-            <div class="bet-control">
-                <span>Bet</span>
+            <div class="slot-grid" id="slot-grid">
 
-                <div class="bet-buttons">
-                    <button id="decrease-bet">−</button>
+                <div class="slot-cell">🐉</div>
+                <div class="slot-cell">💎</div>
+                <div class="slot-cell">👑</div>
+                <div class="slot-cell">🔥</div>
+                <div class="slot-cell">💰</div>
 
-                    <strong id="bet">10</strong>
+                <div class="slot-cell">👑</div>
+                <div class="slot-cell">🐉</div>
+                <div class="slot-cell">🔥</div>
+                <div class="slot-cell">💎</div>
+                <div class="slot-cell">👑</div>
 
-                    <button id="increase-bet">+</button>
+                <div class="slot-cell">💰</div>
+                <div class="slot-cell">🔥</div>
+                <div class="slot-cell">🐉</div>
+                <div class="slot-cell">👑</div>
+                <div class="slot-cell">💎</div>
+
+            </div>
+
+
+            <div class="game-message" id="game-message">
+                Place your bet and spin.
+            </div>
+
+
+            <div class="slot-controls">
+
+                <div class="bet-control">
+                    <span>Bet</span>
+
+                    <div class="bet-buttons">
+                        <button id="decrease-bet">−</button>
+
+                        <strong id="bet">10</strong>
+
+                        <button id="increase-bet">+</button>
+                    </div>
+                </div>
+
+                <button class="spin-button" id="spin-button">
+                    SPIN
+                </button>
+
+                <div class="win-display">
+                    <span>Last Win</span>
+                    <strong id="last-win">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="paytable">
+            <h2>Paytable</h2>
+
+            <div class="paytable-grid">
+                <div>
+                    <span>🐉</span>
+                    <strong>×10</strong>
+                </div>
+
+                <div>
+                    <span>🔥</span>
+                    <strong>×7</strong>
+                </div>
+
+                <div>
+                    <span>💎</span>
+                    <strong>×5</strong>
+                </div>
+
+                <div>
+                    <span>👑</span>
+                    <strong>×3</strong>
+                </div>
+
+                <div>
+                    <span>💰</span>
+                    <strong>×2</strong>
                 </div>
             </div>
 
-            <button class="spin-button" id="spin-button">
-                SPIN
-            </button>
+            <p>
+                Multipliers shown are for 3 matching symbols.
+                Four and five matching symbols give larger rewards.
+                Dragon's Fortune features 5 active paylines.
+            </p>
+        </section>
 
-            <div class="win-display">
-                <span>Last Win</span>
-                <strong id="last-win">0</strong>
-            </div>
-
-        </div>
-
-    </section>
+    </main>
 
 
-    <section class="paytable">
-        <h2>Paytable</h2>
-
-        <div class="paytable-grid">
-            <div>
-                <span>🐉</span>
-                <strong>×10</strong>
-            </div>
-
-            <div>
-                <span>🔥</span>
-                <strong>×7</strong>
-            </div>
-
-            <div>
-                <span>💎</span>
-                <strong>×5</strong>
-            </div>
-
-            <div>
-                <span>👑</span>
-                <strong>×3</strong>
-            </div>
-
-            <div>
-                <span>💰</span>
-                <strong>×2</strong>
-            </div>
-        </div>
-
-        <p>
-            Multipliers shown are for 3 matching symbols.
-            Four and five matching symbols give larger rewards.
-        </p>
-    </section>
-
-</main>
+    <footer>
+        <p>© 2026 LuckyRealms</p>
+        <p>Virtual credits only. No real-money gambling.</p>
+    </footer>
 
 
-<footer>
-    <p>© 2026 LuckyRealms</p>
-    <p>Virtual credits only. No real-money gambling.</p>
-</footer>
-
-
-<script src="../js/slots.js"></script>
+    <script src="../js/slots.js"></script>
 
 </body>
+
 </html>
