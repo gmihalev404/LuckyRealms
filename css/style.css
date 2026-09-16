@@ -10,7 +10,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #09070d;
+
+    background: #080807;
     color: #ffffff;
 }
 
@@ -85,16 +86,16 @@ body {
     padding: 0 10%;
 
     background:
-        radial-gradient(
-            circle at 75% 40%,
-            rgba(91, 45, 145, 0.4),
-            transparent 35%
-        ),
-        linear-gradient(
-            120deg,
-            #09070d,
-            #130b1d
-        );
+        radial-gradient(circle at 78% 35%,
+            rgba(212, 175, 55, 0.14),
+            transparent 30%),
+        radial-gradient(circle at 15% 15%,
+            rgba(115, 45, 24, 0.18),
+            transparent 32%),
+        linear-gradient(135deg,
+            #080807 0%,
+            #15100b 52%,
+            #080807 100%);
 }
 
 .hero-content {
@@ -155,6 +156,8 @@ body {
 
 .games-section {
     padding: 90px 8%;
+
+    background: #0a0908;
 }
 
 .section-heading {
@@ -270,7 +273,7 @@ body {
 
     text-align: center;
 
-    background: #100c15;
+    background: #11100d;
 }
 
 .about-section h2 {
@@ -300,7 +303,7 @@ footer {
     border-top: 1px solid #211a29;
 }
 
-footer p + p {
+footer p+p {
     margin-top: 5px;
 }
 

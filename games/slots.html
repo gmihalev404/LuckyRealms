@@ -35,37 +35,17 @@
     <main class="slot-page">
 
         <section class="slot-header">
-            <p class="slot-subtitle">DRAGON REALM</p>
-            <h1>Dragon's Fortune</h1>
+            <p class="slot-subtitle" id="realm-label"></p>
 
-            <p>
-                Match three or more consecutive symbols on a payline
-                to claim the dragon's treasure.
-            </p>
+            <h1 id="game-title"></h1>
+
+            <p id="game-description"></p>
         </section>
 
 
         <section class="slot-machine">
 
             <div class="slot-grid" id="slot-grid">
-
-                <div class="slot-cell">🐉</div>
-                <div class="slot-cell">💎</div>
-                <div class="slot-cell">👑</div>
-                <div class="slot-cell">🔥</div>
-                <div class="slot-cell">💰</div>
-
-                <div class="slot-cell">👑</div>
-                <div class="slot-cell">🐉</div>
-                <div class="slot-cell">🔥</div>
-                <div class="slot-cell">💎</div>
-                <div class="slot-cell">👑</div>
-
-                <div class="slot-cell">💰</div>
-                <div class="slot-cell">🔥</div>
-                <div class="slot-cell">🐉</div>
-                <div class="slot-cell">👑</div>
-                <div class="slot-cell">💎</div>
 
             </div>
 
@@ -74,8 +54,11 @@
                 Place your bet and spin.
             </div>
 
+            <div class="win-breakdown" id="win-breakdown"></div>
+
 
             <div class="slot-controls">
+
 
                 <div class="bet-control">
                     <span>Bet</span>
@@ -100,44 +83,43 @@
 
             </div>
 
+            <div class="game-stats">
+
+                <div class="stat">
+                    <span>Spins</span>
+                    <strong id="total-spins">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Wins</span>
+                    <strong id="total-wins">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Biggest Win</span>
+                    <strong id="biggest-win">0</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Free Spins</span>
+                    <strong id="free-spins">0</strong>
+                </div>
+
+            </div>
+
+            <button class="refill-button" id="refill-button" hidden>
+                Refill 1000 Credits
+            </button>
         </section>
 
 
         <section class="paytable">
             <h2>Paytable</h2>
 
-            <div class="paytable-grid">
-                <div>
-                    <span>🐉</span>
-                    <strong>×10</strong>
-                </div>
-
-                <div>
-                    <span>🔥</span>
-                    <strong>×7</strong>
-                </div>
-
-                <div>
-                    <span>💎</span>
-                    <strong>×5</strong>
-                </div>
-
-                <div>
-                    <span>👑</span>
-                    <strong>×3</strong>
-                </div>
-
-                <div>
-                    <span>💰</span>
-                    <strong>×2</strong>
-                </div>
+            <div class="paytable-grid" id="paytable-grid">
             </div>
 
-            <p>
-                Multipliers shown are for 3 matching symbols.
-                Four and five matching symbols give larger rewards.
-                Dragon's Fortune features 5 active paylines.
-            </p>
+            <p id="paytable-description"></p>
         </section>
 
     </main>
@@ -149,6 +131,7 @@
     </footer>
 
 
+    <script src="../js/game-configs.js"></script>
     <script src="../js/slots.js"></script>
 
 </body>

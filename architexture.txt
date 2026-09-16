@@ -1,0 +1,11 @@
+                 GAME_CONFIGS
+                /     |      \
+          Dragon   Poseidon   Shadow
+               \      |      /
+                  slots.js
+               generic engine
+
+                    ↓
+
+                 home.js
+          generates game cards
