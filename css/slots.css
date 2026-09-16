@@ -103,8 +103,18 @@
     user-select: none;
 }
 
-.slot-grid.spinning .slot-cell {
-    animation: reel-spin 0.15s linear infinite;
+.slot-cell.spinning {
+    animation: reel-spin 0.08s linear infinite;
+}
+
+.slot-cell.winning-cell {
+    border-color: #efd15e;
+
+    box-shadow:
+        0 0 12px rgba(239, 209, 94, 0.8),
+        inset 0 0 20px rgba(212, 175, 55, 0.15);
+
+    transform: scale(1.04);
 }
 
 @keyframes reel-spin {
@@ -202,6 +212,11 @@
 
 .bet-buttons button:hover {
     border-color: #d4af37;
+}
+
+.bet-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .bet-buttons strong {
