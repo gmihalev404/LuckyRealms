@@ -4,7 +4,11 @@ LuckyRealms is a browser-based virtual slot casino built with HTML, CSS and vani
 
 The project features multiple themed slot machines powered by a shared reusable slot engine, while each game keeps its own visual identity, symbol probabilities, payouts, bonus mechanics and statistics.
 
-> LuckyRealms uses virtual credits only. No real-money gambling is involved.
+LuckyRealms uses virtual credits only. No real-money gambling is involved.
+
+## Live Demo
+
+[Play LuckyRealms](https://gmihalev404.github.io/LuckyRealms/)
 
 ## Games
 
