@@ -1,11 +1,41 @@
-                 GAME_CONFIGS
-                /     |      \
-          Dragon   Poseidon   Shadow
-               \      |      /
-                  slots.js
-               generic engine
+                         GAME_CONFIGS
+                        /     |      \
+                  Dragon   Poseidon   Shadow
+                       \      |      /
+                        \     |     /
+                         \    |    /
+                  ┌───────┴───┴───────┐
+                  │                   │
+               slots.js            sound.js
+            gameplay engine        audio engine
+                  │                   │
+                  └─────────┬─────────┘
+                            │
+                       slots.html
 
-                    ↓
 
-                 home.js
-          generates game cards
+                         GAME_CONFIGS
+                              │
+                           home.js
+                              │
+                    generates game cards
+
+
+Adding a new game requires:
+
+1. A new GAME_CONFIGS entry
+   - symbols
+   - payouts
+   - bonus
+   - theme metadata
+   - statistics key
+   - music
+   - SFX configuration
+
+2. New theme styles
+   - home card styles
+   - slot page styles
+
+3. Background audio asset
+
+No changes to slots.js, sound.js, home.js or slots.html are required.
