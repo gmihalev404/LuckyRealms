@@ -8,11 +8,9 @@
     padding: 60px 8% 90px;
 
     background:
-        radial-gradient(
-            circle at 50% 20%,
+        radial-gradient(circle at 50% 20%,
             rgba(101, 35, 140, 0.3),
-            transparent 35%
-        ),
+            transparent 35%),
         #09070d;
 }
 
@@ -44,7 +42,7 @@
     font-size: 48px;
 }
 
-.slot-header > p:last-child {
+.slot-header>p:last-child {
     color: #aaa3b3;
 }
 
@@ -98,11 +96,9 @@
     align-items: center;
 
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #22182a,
-            #100b15
-        );
+            #100b15);
 
     border: 1px solid #3a2c43;
     border-radius: 10px;
@@ -246,8 +242,8 @@
     gap: 8px;
 }
 
-.bet-control > span,
-.win-display > span {
+.bet-control>span,
+.win-display>span {
     color: #8f8797;
 
     font-size: 13px;
@@ -479,7 +475,7 @@
     font-size: 13px;
 }
 
-.paytable > p {
+.paytable>p {
     margin-top: 20px;
 
     text-align: center;
@@ -496,11 +492,9 @@
 
 .ocean-theme .slot-page {
     background:
-        radial-gradient(
-            circle at 50% 20%,
+        radial-gradient(circle at 50% 20%,
             rgba(0, 139, 190, 0.3),
-            transparent 35%
-        ),
+            transparent 35%),
         #050d13;
 }
 
@@ -555,6 +549,19 @@
         rgba(86, 214, 245, 0.1);
 }
 
+.ocean-theme .sound-toggle:hover {
+    color: #56d6f5;
+
+    border-color: #56d6f5;
+}
+
+.ocean-theme .sound-toggle:hover,
+.ocean-theme .volume-control:hover {
+    color: #56d6f5;
+
+    border-color: #56d6f5;
+}
+
 
 /* =========================================================
    SHADOW THEME
@@ -562,11 +569,9 @@
 
 .shadow-theme .slot-page {
     background:
-        radial-gradient(
-            circle at 50% 18%,
+        radial-gradient(circle at 50% 18%,
             rgba(74, 27, 84, 0.18),
-            transparent 32%
-        ),
+            transparent 32%),
         #020203;
 }
 
@@ -587,11 +592,9 @@
 
 .shadow-theme .slot-cell {
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             #151018,
-            #070608
-        );
+            #070608);
 
     border-color: #251c29;
 }
@@ -653,6 +656,19 @@
         rgba(129, 73, 137, 0.1);
 }
 
+.shadow-theme .sound-toggle:hover {
+    color: #bd73c7;
+
+    border-color: #814989;
+}
+
+.shadow-theme .sound-toggle:hover,
+.shadow-theme .volume-control:hover {
+    color: #bd73c7;
+
+    border-color: #814989;
+}
+
 
 /* =========================================================
    RESPONSIVE
@@ -700,4 +716,97 @@
         grid-template-columns:
             repeat(2, 1fr);
     }
+
+    .slot-toolbar {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================================
+   SLOT TOOLBAR
+   ========================================================= */
+
+.slot-toolbar {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 12px;
+}
+
+.sound-toggle {
+    padding: 7px 12px;
+
+    background: transparent;
+    color: #aaa3b3;
+
+    border: 1px solid #3a2c43;
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.sound-toggle:hover {
+    color: #d4af37;
+
+    border-color: #d4af37;
+}
+
+/* =========================================================
+   AUDIO CONTROLS
+   ========================================================= */
+
+.slot-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.sound-toggle {
+    padding: 7px 12px;
+
+    background: transparent;
+    color: #aaa3b3;
+
+    border: 1px solid #3a2c43;
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.sound-toggle:hover {
+    color: #d4af37;
+
+    border-color: #d4af37;
+}
+
+
+.volume-control {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 5px 10px;
+
+    border: 1px solid #3a2c43;
+    border-radius: 6px;
+}
+
+.volume-control input {
+    width: 90px;
+
+    cursor: pointer;
 }
