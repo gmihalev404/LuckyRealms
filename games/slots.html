@@ -7,6 +7,8 @@
 
     <title>Dragon's Fortune | LuckyRealms</title>
 
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/slots.css">
 </head>
@@ -31,19 +33,16 @@
         </div>
     </header>
 
-
     <main class="slot-page">
 
         <section class="slot-header">
             <p class="slot-subtitle" id="realm-label"></p>
-
             <h1 id="game-title"></h1>
-
             <p id="game-description"></p>
         </section>
 
-
         <section class="slot-machine">
+
             <div class="slot-toolbar">
 
                 <button class="sound-toggle" id="sound-toggle" type="button">
@@ -57,14 +56,18 @@
                 <div class="volume-control">
                     <span>🔉</span>
 
-                    <input type="range" id="volume-slider" min="0" max="100" step="1" aria-label="Volume">
+                    <input
+                        type="range"
+                        id="volume-slider"
+                        min="0"
+                        max="100"
+                        step="1"
+                        aria-label="Volume">
                 </div>
 
             </div>
-            <div class="slot-grid" id="slot-grid">
 
-            </div>
-
+            <div class="slot-grid" id="slot-grid"></div>
 
             <div class="game-message" id="game-message">
                 Place your bet and spin.
@@ -72,18 +75,14 @@
 
             <div class="win-breakdown" id="win-breakdown"></div>
 
-
             <div class="slot-controls">
-
 
                 <div class="bet-control">
                     <span>Bet</span>
 
                     <div class="bet-buttons">
                         <button id="decrease-bet">−</button>
-
                         <strong id="bet">10</strong>
-
                         <button id="increase-bet">+</button>
                     </div>
                 </div>
@@ -126,26 +125,23 @@
             <button class="refill-button" id="refill-button" hidden>
                 Refill 1000 Credits
             </button>
-        </section>
 
+        </section>
 
         <section class="paytable">
             <h2>Paytable</h2>
 
-            <div class="paytable-grid" id="paytable-grid">
-            </div>
+            <div class="paytable-grid" id="paytable-grid"></div>
 
             <p id="paytable-description"></p>
         </section>
 
     </main>
 
-
     <footer>
         <p>© 2026 LuckyRealms</p>
         <p>Virtual credits only. No real-money gambling.</p>
     </footer>
-
 
     <script src="../js/game-configs.js"></script>
     <script src="../js/sound.js"></script>
