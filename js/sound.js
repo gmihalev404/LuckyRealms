@@ -20,13 +20,15 @@ let musicEnabled =
     ) !== "false";
 
 
-let masterVolume =
-    Number(
-        localStorage.getItem(
-            VOLUME_STORAGE_KEY
-        )
+const savedVolume =
+    localStorage.getItem(
+        VOLUME_STORAGE_KEY
     );
 
+let masterVolume =
+    savedVolume === null
+        ? 0.7
+        : Number(savedVolume);
 
 if (
     !Number.isFinite(
