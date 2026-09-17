@@ -1,4 +1,5 @@
 window.GAME_CONFIGS = {
+
     dragon: {
         cardIcon: "🐉",
         cardClass: "dragon-realm",
@@ -47,6 +48,70 @@ window.GAME_CONFIGS = {
             triggerCount: 3,
             freeSpins: 5,
             isBonus: true
+        },
+
+        audio: {
+            music:
+                "../assets/audio/dragon-theme.mp3",
+
+            musicVolume:
+                0.25,
+
+            sfx: {
+                spin: {
+                    tones: [
+                        {
+                            frequency: 190,
+                            duration: 0.28,
+                            type: "sawtooth",
+                            volume: 0.09,
+                            endFrequency: 80
+                        }
+                    ]
+                },
+
+                reelStop: {
+                    frequency: 180,
+                    frequencyStep: 28,
+
+                    endFrequency: 130,
+                    endFrequencyStep: 20,
+
+                    duration: 0.09,
+                    type: "square",
+                    volume: 0.07
+                },
+
+                win: {
+                    notes: [
+                        392,
+                        523,
+                        659,
+                        784
+                    ],
+
+                    duration: 0.22,
+                    type: "triangle",
+                    volume: 0.12,
+                    spacing: 0.10
+                },
+
+                bonus: {
+                    notes: [
+                        196,
+                        392,
+                        523,
+                        659,
+                        784,
+                        1046
+                    ],
+
+                    duration: 0.32,
+                    type: "sawtooth",
+                    volume: 0.10,
+                    spacing: 0.11
+                }
+            }
         }
     },
 
@@ -99,6 +164,79 @@ window.GAME_CONFIGS = {
             triggerCount: 3,
             freeSpins: 4,
             isBonus: true
+        },
+
+        audio: {
+            music:
+                "../assets/audio/poseidon-theme.mp3",
+
+            musicVolume:
+                0.25,
+
+            sfx: {
+                spin: {
+                    tones: [
+                        {
+                            frequency: 330,
+                            duration: 0.35,
+                            type: "sine",
+                            volume: 0.09,
+                            endFrequency: 180
+                        },
+
+                        {
+                            frequency: 440,
+                            duration: 0.30,
+                            type: "triangle",
+                            volume: 0.055,
+                            endFrequency: 260,
+                            delay: 0.04
+                        }
+                    ]
+                },
+
+                reelStop: {
+                    frequency: 420,
+                    frequencyStep: 40,
+
+                    endFrequency: 300,
+                    endFrequencyStep: 25,
+
+                    duration: 0.12,
+                    type: "sine",
+                    volume: 0.075
+                },
+
+                win: {
+                    notes: [
+                        523,
+                        659,
+                        784,
+                        1046
+                    ],
+
+                    duration: 0.28,
+                    type: "sine",
+                    volume: 0.12,
+                    spacing: 0.11
+                },
+
+                bonus: {
+                    notes: [
+                        392,
+                        523,
+                        659,
+                        784,
+                        987,
+                        1318
+                    ],
+
+                    duration: 0.35,
+                    type: "triangle",
+                    volume: 0.105,
+                    spacing: 0.13
+                }
+            }
         }
     },
 
@@ -151,6 +289,78 @@ window.GAME_CONFIGS = {
             triggerCount: 3,
             freeSpins: 6,
             isBonus: true
+        },
+
+        audio: {
+            music:
+                "../assets/audio/shadow-theme.mp3",
+
+            musicVolume:
+                0.25,
+
+            sfx: {
+                spin: {
+                    tones: [
+                        {
+                            frequency: 115,
+                            duration: 0.45,
+                            type: "sawtooth",
+                            volume: 0.09,
+                            endFrequency: 48
+                        },
+
+                        {
+                            frequency: 82,
+                            duration: 0.40,
+                            type: "sine",
+                            volume: 0.07,
+                            endFrequency: 55
+                        }
+                    ]
+                },
+
+                reelStop: {
+                    frequency: 120,
+                    frequencyStep: 13,
+
+                    endFrequency: 80,
+                    endFrequencyStep: 10,
+
+                    duration: 0.14,
+                    type: "square",
+                    volume: 0.065
+                },
+
+                win: {
+                    notes: [
+                        220,
+                        261,
+                        311,
+                        440
+                    ],
+
+                    duration: 0.30,
+                    type: "triangle",
+                    volume: 0.11,
+                    spacing: 0.13
+                },
+
+                bonus: {
+                    notes: [
+                        110,
+                        146,
+                        174,
+                        220,
+                        311,
+                        440
+                    ],
+
+                    duration: 0.42,
+                    type: "sine",
+                    volume: 0.11,
+                    spacing: 0.16
+                }
+            }
         }
     }
 };

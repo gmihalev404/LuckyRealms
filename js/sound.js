@@ -8,25 +8,6 @@ const VOLUME_STORAGE_KEY =
     "luckyRealmsVolume";
 
 
-const MUSIC_TRACKS = {
-    dragon:
-        "../assets/audio/dragon-theme.mp3",
-
-    poseidon:
-        "../assets/audio/poseidon-theme.mp3",
-
-    shadow:
-        "../assets/audio/shadow-theme.mp3"
-};
-
-
-/*
-    Background music is intentionally quieter
-    than the sound effects.
-*/
-const MUSIC_VOLUME_MULTIPLIER = 0.55;
-
-
 let soundEnabled =
     localStorage.getItem(
         SOUND_STORAGE_KEY
@@ -48,7 +29,9 @@ let masterVolume =
 
 
 if (
-    !Number.isFinite(masterVolume)
+    !Number.isFinite(
+        masterVolume
+    )
 ) {
     masterVolume = 0.7;
 }
@@ -82,6 +65,39 @@ let backgroundMusic =
 
 
 /* =========================================================
+   GAME AUDIO CONFIG
+   ========================================================= */
+
+function getGameConfig() {
+
+    return (
+        window.GAME_CONFIGS[
+            currentTheme
+        ] ||
+        window.GAME_CONFIGS.dragon
+    );
+}
+
+
+function getAudioConfig() {
+
+    return (
+        getGameConfig().audio ||
+        {}
+    );
+}
+
+
+function getSfxConfig() {
+
+    return (
+        getAudioConfig().sfx ||
+        {}
+    );
+}
+
+
+/* =========================================================
    AUDIO CONTEXT
    ========================================================= */
 
@@ -108,6 +124,7 @@ function getAudioContext() {
         effectsGain.connect(
             masterGain
         );
+
 
         masterGain.connect(
             audioContext.destination
@@ -158,18 +175,30 @@ function updateMusicVolume() {
     }
 
 
+    const audio =
+        getAudioConfig();
+
+
+    const multiplier =
+        Number.isFinite(
+            audio.musicVolume
+        )
+            ? audio.musicVolume
+            : 0.55;
+
+
     backgroundMusic.volume =
         Math.min(
             1,
 
             masterVolume *
-            MUSIC_VOLUME_MULTIPLIER
+            multiplier
         );
 }
 
 
 /* =========================================================
-   GENERIC SFX TONE
+   BASIC TONE
    ========================================================= */
 
 function playTone(
@@ -207,6 +236,7 @@ function playTone(
     const startTime =
         context.currentTime +
         delay;
+
 
     const endTime =
         startTime +
@@ -259,6 +289,7 @@ function playTone(
         gain
     );
 
+
     gain.connect(
         effectsGain
     );
@@ -268,6 +299,7 @@ function playTone(
         startTime
     );
 
+
     oscillator.stop(
         endTime
     );
@@ -275,385 +307,168 @@ function playTone(
 
 
 /* =========================================================
-   DRAGON SFX
+   GENERIC SPIN SFX
    ========================================================= */
 
-function dragonSpin() {
+function playSpin() {
 
-    playTone(
-        190,
-        0.28,
-        {
-            type: "sawtooth",
-            volume: 0.09,
-            endFrequency: 80
-        }
-    );
-}
+    const config =
+        getSfxConfig().spin;
 
-
-function dragonReelStop(column) {
-
-    playTone(
-        180 + column * 28,
-        0.09,
-        {
-            type: "square",
-            volume: 0.07,
-
-            endFrequency:
-                130 +
-                column * 20
-        }
-    );
-}
-
-
-function dragonWin() {
-
-    const notes = [
-        392,
-        523,
-        659,
-        784
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.22,
-                {
-                    type: "triangle",
-                    volume: 0.12,
-                    delay:
-                        index * 0.1
-                }
-            );
-        }
-    );
-}
-
-
-function dragonBonus() {
-
-    const notes = [
-        196,
-        392,
-        523,
-        659,
-        784,
-        1046
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.32,
-                {
-                    type: "sawtooth",
-                    volume: 0.1,
-
-                    delay:
-                        index * 0.11
-                }
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   POSEIDON SFX
-   ========================================================= */
-
-function poseidonSpin() {
-
-    playTone(
-        330,
-        0.35,
-        {
-            type: "sine",
-            volume: 0.09,
-            endFrequency: 180
-        }
-    );
-
-
-    playTone(
-        440,
-        0.3,
-        {
-            type: "triangle",
-            volume: 0.055,
-            endFrequency: 260,
-            delay: 0.04
-        }
-    );
-}
-
-
-function poseidonReelStop(column) {
-
-    playTone(
-        420 + column * 40,
-        0.12,
-        {
-            type: "sine",
-            volume: 0.075,
-
-            endFrequency:
-                300 +
-                column * 25
-        }
-    );
-}
-
-
-function poseidonWin() {
-
-    const notes = [
-        523,
-        659,
-        784,
-        1046
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.28,
-                {
-                    type: "sine",
-                    volume: 0.12,
-
-                    delay:
-                        index * 0.11
-                }
-            );
-        }
-    );
-}
-
-
-function poseidonBonus() {
-
-    const notes = [
-        392,
-        523,
-        659,
-        784,
-        987,
-        1318
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.35,
-                {
-                    type: "triangle",
-                    volume: 0.105,
-
-                    delay:
-                        index * 0.13
-                }
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   SHADOW SFX
-   ========================================================= */
-
-function shadowSpin() {
-
-    playTone(
-        115,
-        0.45,
-        {
-            type: "sawtooth",
-            volume: 0.09,
-            endFrequency: 48
-        }
-    );
-
-
-    playTone(
-        82,
-        0.4,
-        {
-            type: "sine",
-            volume: 0.07,
-            endFrequency: 55
-        }
-    );
-}
-
-
-function shadowReelStop(column) {
-
-    playTone(
-        120 + column * 13,
-        0.14,
-        {
-            type: "square",
-            volume: 0.065,
-
-            endFrequency:
-                80 +
-                column * 10
-        }
-    );
-}
-
-
-function shadowWin() {
-
-    const notes = [
-        220,
-        261,
-        311,
-        440
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.3,
-                {
-                    type: "triangle",
-                    volume: 0.11,
-
-                    delay:
-                        index * 0.13
-                }
-            );
-        }
-    );
-}
-
-
-function shadowBonus() {
-
-    const notes = [
-        110,
-        146,
-        174,
-        220,
-        311,
-        440
-    ];
-
-
-    notes.forEach(
-        (note, index) => {
-
-            playTone(
-                note,
-                0.42,
-                {
-                    type: "sine",
-                    volume: 0.11,
-
-                    delay:
-                        index * 0.16
-                }
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   THEME SFX
-   ========================================================= */
-
-const themeEffects = {
-
-    dragon: {
-        spin:
-            dragonSpin,
-
-        reelStop:
-            dragonReelStop,
-
-        win:
-            dragonWin,
-
-        bonus:
-            dragonBonus
-    },
-
-
-    poseidon: {
-        spin:
-            poseidonSpin,
-
-        reelStop:
-            poseidonReelStop,
-
-        win:
-            poseidonWin,
-
-        bonus:
-            poseidonBonus
-    },
-
-
-    shadow: {
-        spin:
-            shadowSpin,
-
-        reelStop:
-            shadowReelStop,
-
-        win:
-            shadowWin,
-
-        bonus:
-            shadowBonus
-    }
-};
-
-
-function playThemeEffect(
-    effect,
-    ...args
-) {
 
     if (
-        !soundEnabled
+        !config ||
+        !Array.isArray(
+            config.tones
+        )
     ) {
         return;
     }
 
 
-    const theme =
-        themeEffects[
-            currentTheme
-        ] ||
-        themeEffects.dragon;
+    for (
+        const tone
+        of config.tones
+    ) {
+
+        playTone(
+            tone.frequency,
+            tone.duration,
+
+            {
+                type:
+                    tone.type,
+
+                volume:
+                    tone.volume,
+
+                delay:
+                    tone.delay || 0,
+
+                endFrequency:
+                    tone.endFrequency ??
+                    tone.frequency
+            }
+        );
+    }
+}
 
 
-    theme[effect](
-        ...args
+/* =========================================================
+   GENERIC REEL STOP SFX
+   ========================================================= */
+
+function playReelStop(
+    column
+) {
+
+    const config =
+        getSfxConfig()
+            .reelStop;
+
+
+    if (
+        !config
+    ) {
+        return;
+    }
+
+
+    const frequency =
+        config.frequency +
+        (
+            config.frequencyStep ||
+            0
+        ) *
+        column;
+
+
+    const endFrequency =
+        (
+            config.endFrequency ??
+            config.frequency
+        ) +
+        (
+            config.endFrequencyStep ||
+            0
+        ) *
+        column;
+
+
+    playTone(
+        frequency,
+        config.duration,
+
+        {
+            type:
+                config.type,
+
+            volume:
+                config.volume,
+
+            endFrequency
+        }
+    );
+}
+
+
+/* =========================================================
+   GENERIC NOTE SEQUENCE
+   ========================================================= */
+
+function playSequence(
+    config
+) {
+
+    if (
+        !config ||
+        !Array.isArray(
+            config.notes
+        )
+    ) {
+        return;
+    }
+
+
+    config.notes.forEach(
+        (note, index) => {
+
+            playTone(
+                note,
+                config.duration,
+
+                {
+                    type:
+                        config.type,
+
+                    volume:
+                        config.volume,
+
+                    delay:
+                        index *
+                        (
+                            config.spacing ||
+                            0
+                        )
+                }
+            );
+        }
+    );
+}
+
+
+function playWin() {
+
+    playSequence(
+        getSfxConfig().win
+    );
+}
+
+
+function playBonus() {
+
+    playSequence(
+        getSfxConfig().bonus
     );
 }
 
@@ -675,16 +490,26 @@ function createBackgroundMusic() {
     }
 
 
+    const musicPath =
+        getAudioConfig().music;
+
+
+    if (
+        !musicPath
+    ) {
+        return;
+    }
+
+
     backgroundMusic =
         new Audio(
-            MUSIC_TRACKS[
-                currentTheme
-            ]
+            musicPath
         );
 
 
     backgroundMusic.loop =
         true;
+
 
     backgroundMusic.preload =
         "auto";
@@ -711,6 +536,13 @@ function startMusic() {
     }
 
 
+    if (
+        backgroundMusic === null
+    ) {
+        return;
+    }
+
+
     updateMusicVolume();
 
 
@@ -719,8 +551,8 @@ function startMusic() {
         .catch(
             () => {
                 /*
-                    Browser may block audio until
-                    a user interaction occurs.
+                    Browser may block playback
+                    before user interaction.
                 */
             }
         );
@@ -736,24 +568,22 @@ function stopMusic() {
     }
 
 
-    /*
-        Do not reset currentTime.
-        If music is enabled again,
-        it continues from the same point.
-    */
-
     backgroundMusic.pause();
 }
 
 
 /* =========================================================
-   SETTINGS
+   THEME
    ========================================================= */
 
-function setTheme(theme) {
+function setTheme(
+    theme
+) {
 
     const newTheme =
-        MUSIC_TRACKS[theme]
+        window.GAME_CONFIGS[
+            theme
+        ]
             ? theme
             : "dragon";
 
@@ -796,6 +626,10 @@ function setTheme(theme) {
     }
 }
 
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
 
 function toggleSound() {
 
@@ -841,7 +675,9 @@ function toggleMusic() {
 }
 
 
-function setVolume(value) {
+function setVolume(
+    value
+) {
 
     masterVolume =
         Math.max(
@@ -860,6 +696,7 @@ function setVolume(value) {
 
 
     updateEffectsVolume();
+
     updateMusicVolume();
 }
 
@@ -890,39 +727,17 @@ window.LuckySounds = {
 
     setTheme,
 
+    spin:
+        playSpin,
 
-    spin() {
+    reelStop:
+        playReelStop,
 
-        playThemeEffect(
-            "spin"
-        );
-    },
+    win:
+        playWin,
 
-
-    reelStop(column) {
-
-        playThemeEffect(
-            "reelStop",
-            column
-        );
-    },
-
-
-    win() {
-
-        playThemeEffect(
-            "win"
-        );
-    },
-
-
-    bonus() {
-
-        playThemeEffect(
-            "bonus"
-        );
-    },
-
+    bonus:
+        playBonus,
 
     startMusic,
     stopMusic,
