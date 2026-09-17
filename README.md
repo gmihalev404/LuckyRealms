@@ -62,7 +62,22 @@ The slot machines share one reusable engine:
 
 Game-specific behavior is defined inside `game-configs.js`.
 
-This makes it possible to add new slot machines without duplicating the core slot logic.
+Each game configuration contains:
+
+- symbols and probabilities
+- payout multipliers
+- bonus configuration
+- visual theme information
+- statistics storage key
+- background music
+- sound-effect configuration
+
+The shared `slots.js` engine handles the gameplay logic, while the shared
+`sound.js` engine reads the selected game's audio configuration dynamically.
+
+This means that adding a new slot machine only requires a new game
+configuration, theme styles and audio assets without modifying the shared
+gameplay or audio engines.
 
 ## Project Structure
 
